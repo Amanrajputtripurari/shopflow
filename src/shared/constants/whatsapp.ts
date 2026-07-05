@@ -1,0 +1,5 @@
+/** Default page size for Settings → WhatsApp → Delivery queue. */
+export const WHATSAPP_DELIVERY_QUEUE_DEFAULT_PAGE_SIZE = 10
+
+/** @deprecated Use WHATSAPP_DELIVERY_QUEUE_DEFAULT_PAGE_SIZE */
+export const WHATSAPP_DELIVERY_QUEUE_PREVIEW_LIMIT = WHATSAPP_DELIVERY_QUEUE_DEFAULT_PAGE_SIZE

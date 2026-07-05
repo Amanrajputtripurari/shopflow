@@ -1,0 +1,31 @@
+---
+description: WhatsApp Baileys module conventions (Phase 4)
+globs: src/main/whatsapp/**/*
+alwaysApply: false
+---
+
+# WhatsApp (Phase 4 only)
+
+Do not implement until Phase 4 unless user explicitly requests early spike.
+
+## Location
+
+- All Baileys code under `main/whatsapp/`
+- Orchestration in `whatsapp.service.ts` — renderer uses IPC only
+
+## Anti-ban
+
+- All outbound messages pass through rate-limited queue
+- Enforce limits from `anti_ban_config` — see `docs/WHATSAPP.md`
+- Bulk/reminders require Admin approval queue
+- Log every send to `whatsapp_logs`
+
+## Provider pattern
+
+- Interface `WhatsAppProvider` — implement `BaileysProvider` first for future API swap
+
+## Inbox
+
+- One conversation per customer phone
+- Assignment lock prevents two staff replying simultaneously
+- Sort rules documented in `docs/WHATSAPP.md`

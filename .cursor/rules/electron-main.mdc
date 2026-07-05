@@ -1,0 +1,28 @@
+---
+description: Electron main process and MVC backend conventions
+globs: src/main/**/*
+alwaysApply: false
+---
+
+# Main process (MVC backend)
+
+## Layer rules
+
+- **Controllers** (`controllers/`): register `ipcMain.handle`, validate IPC payload shape, call service, return DTO — no MongoDB calls
+- **Services** (`services/`): business rules, emit events
+- **Repositories** (`repositories/`): MongoDB only — no UI or IPC imports
+- **Helpers** (`helpers/`): logger, crypto-store, error-handler, ipc-wrapper
+
+## MongoDB
+
+- Connect in `database/connection.ts` using URL from encrypted store (or dev `.env` in main only)
+- Never pass connection string to renderer
+- Index creation in `database/index-manager.ts` per phase
+
+## Events
+
+Emit domain events from services via `events/event-bus.ts`. Controllers may forward to `webContents.send`.
+
+## New domain module
+
+Add model → repository → service → controller → preload API → shared types. Register in `controllers/register-all.ts`.

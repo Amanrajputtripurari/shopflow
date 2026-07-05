@@ -1,0 +1,93 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+
+# ── Build & packaging ─────────────────────────────────────────────────────────
+dist/
+out/
+release/
+*.tsbuildinfo
+tsconfig.*.tsbuildinfo
+
+# Vite / electron-vite cache (inside node_modules, listed for clarity)
+.vite/
+
+# ── Environment & secrets (never commit) ──────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+
+credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+
+# Encrypted store / local credentials (if copied into repo during dev)
+.shopflow/
+crypto-store/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── Runtime data (Electron userData — do not commit) ──────────────────────────
+# PDF bills, prefs, window state, app logs live under OS userData in production.
+# Ignore if ever synced/copied into the project folder during local debugging.
+bills/
+whatsapp-auth/
+window-state/
+local-preferences/
+
+# MongoDB backups created by ShopFlow
+shopflow-backup-*/
+
+# ── WhatsApp session (never commit) ─────────────────────────────────────────
+.wwebjs_auth/
+.wwebjs_cache/
+baileys-session/
+whatsapp-session/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── IDE & editors ─────────────────────────────────────────────────────────────
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# VS Code — keep shared settings; ignore personal overrides
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# ── Test & coverage ───────────────────────────────────────────────────────────
+coverage/
+.nyc_output/
+*.lcov
+
+# ── Misc cache ────────────────────────────────────────────────────────────────
+.cache/
+.eslintcache
+.turbo/
+*.tmp
+*.temp

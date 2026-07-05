@@ -1,0 +1,24 @@
+---
+description: ShopFlow project overview and hard constraints
+alwaysApply: true
+---
+
+# ShopFlow
+
+Electron + React + MongoDB desktop app for single-company orders, billing, expenses, WhatsApp (Phase 4).
+
+## Hard rules
+
+- MongoDB runs in **main process only** — no separate Express/backend server
+- Renderer uses **preload IPC** only — never import `mongodb` in renderer
+- Follow **MVC**: Controller → Service → Repository
+- IPC channels only in `shared/ipc-channels.ts`
+- Check `docs/PHASES.md` before adding features — respect phase boundaries
+
+## Docs
+
+Read `docs/ARCHITECTURE.md`, `docs/PROJECT-STRUCTURE.md`, `AGENTS.md` before structural changes.
+
+## Current phase
+
+Phase 0: foundation shell only — no orders/products/customers/WhatsApp business logic.

@@ -1,0 +1,1 @@
+export const MAX_PRODUCT_EXTRA_CHARGES = 3

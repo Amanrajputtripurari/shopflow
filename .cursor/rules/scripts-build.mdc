@@ -1,0 +1,23 @@
+---
+description: Scripts and build automation conventions
+globs: scripts/**/*
+alwaysApply: false
+---
+
+# Scripts
+
+- All npm scripts delegate to `scripts/*.mjs` — keep package.json thin
+- `dev.mjs` — electron-vite dev with main/preload/renderer
+- `build.mjs` — production compile all processes
+- `package.mjs` — electron-builder for installers
+
+## Conventions
+
+- Use `node:` imports and ESM in `.mjs` files
+- Cross-platform paths via `path` module
+- Do not embed secrets in scripts
+- Exit non-zero on failure for CI
+
+## Resources
+
+- Icons and entitlements in `resources/` — referenced from builder config

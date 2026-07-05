@@ -1,0 +1,24 @@
+---
+description: Phase gates — scope control for ShopFlow
+alwaysApply: true
+---
+
+# Phase gates
+
+Before implementing a feature, identify its phase in `docs/PHASES.md`.
+
+## Phase 0 allowed
+
+- Electron + React + shadcn shell, scripts, builder config
+- MongoDB connection by URL, setup wizard, health status
+- Settings, theme, logging, event bus, IPC skeleton
+- Login/dashboard **UI placeholders** only
+
+## Phase 0 forbidden
+
+- Product/customer/order/expense CRUD
+- PDF bills, GST, credit ledger, stock
+- Baileys / WhatsApp
+- Real auth business logic (beyond stub guard)
+
+Do not "helpfully" add Phase 1+ code during Phase 0 work unless user explicitly expands scope.

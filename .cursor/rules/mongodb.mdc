@@ -1,0 +1,31 @@
+---
+description: MongoDB repository and schema conventions
+globs: src/main/database/**/*,src/main/repositories/**/*,src/main/models/**/*
+alwaysApply: false
+---
+
+# MongoDB
+
+## Access
+
+- Driver imported only in `main/database/` and `main/repositories/`
+- Single shared connection from `connection.ts` — reuse pool, handle reconnect
+
+## Repositories
+
+- Extend or compose `base.repository.ts` for common CRUD
+- Collection names: plural snake_case (`orders`, `customer_ledger`)
+- Return typed documents; map `_id` to string DTOs for IPC when needed
+
+## Migrations
+
+- Track `app_meta.schemaVersion`
+- Migrations in `main/database/migrations/` run on startup before IPC serves requests
+
+## Indexes
+
+- Define in `index-manager.ts` grouped by phase — see `docs/DATABASE.md`
+
+## Snapshots
+
+- Orders store product name/price/tax snapshots — do not join live product price for historical bills

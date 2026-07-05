@@ -1,0 +1,31 @@
+---
+description: React renderer and shadcn UI conventions
+globs: src/renderer/**/*
+alwaysApply: false
+---
+
+# Renderer (View)
+
+## Rules
+
+- **No direct database access** — use `window.api.*` from preload only
+- Pages in `pages/`; reusable UI in `components/`
+- UI orchestration in `viewmodels/` or hooks — not in presentational components
+- Use shadcn components from `components/ui/` — do not duplicate primitives
+
+## Stack patterns
+
+- React Router for navigation
+- React Hook Form + Zod for forms
+- Tailwind + CSS variables from shadcn theme
+- Toast for user-facing errors (technical detail goes to logs in main)
+
+## Layout
+
+- App shell: Sidebar + Header + content (`components/layout/`)
+- Phase 0 pages: setup wizard, login shell, dashboard placeholder, settings
+
+## Naming
+
+- Components: PascalCase (`OrderForm.tsx`)
+- Hooks/viewmodels: `use-*` prefix

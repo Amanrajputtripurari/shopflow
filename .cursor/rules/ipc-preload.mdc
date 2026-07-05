@@ -1,0 +1,28 @@
+---
+description: Preload bridge and IPC conventions
+globs: src/preload/**/*,src/shared/ipc-channels.ts,src/shared/events.ts
+alwaysApply: false
+---
+
+# IPC & preload
+
+## Channel naming
+
+- Format: `domain:action` — e.g. `settings:save`, `db:test-connection`
+- Define all channels in `shared/ipc-channels.ts` — no magic strings elsewhere
+
+## Preload
+
+- Expose grouped API via `contextBridge.exposeInMainWorld('api', { ... })`
+- One file per domain under `preload/api/`
+- Return typed promises from `ipcRenderer.invoke`
+
+## Shared
+
+- Types used by main and renderer live in `shared/types/`
+- Event constants in `shared/events.ts`
+
+## Security
+
+- Do not expose raw `ipcRenderer` or Node APIs to renderer
+- Sanitize errors in main before returning to UI
