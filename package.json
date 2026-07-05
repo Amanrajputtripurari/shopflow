@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "description": "Desktop business management — orders, billing, expenses, WhatsApp",
   "main": "./out/main/index.js",
-  "author": "ShopFlow",
-  "license": "UNLICENSED",
-  "private": true,
+  "author": "ShopFlow Contributors",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev.mjs",
